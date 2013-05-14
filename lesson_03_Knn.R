@@ -2,60 +2,68 @@
 library(class)
 library(ggplot2)
 
-KNN <- function(percent){
-## TRAIN/TEST SPLIT
-# initialize random seed for consistency
-# this allows our data to look the same every single time the experiment is run
-set.seed(1234) 
+
+#define helper functions
+KNN <- function(percent, max){
+	
+	## TRAIN/TEST SPLIT
+	# initialize random seed for consistency
+	# this allows our data to look the same every single time the experiment is run
+	set.seed(1234) 
 
 
-# we want to use 70% of our data as a training set
-N <- nrow(data)
-train.pct <- percent
+	# we want to use 70% of our data as a training set
+	N <- nrow(data)
+	train.pct <- percent
 
-train.index <- sample(1:N, train.pct * N)       # random sample of records (training set)
-train.data <- data[train.index, ]       # perform train/test split
-test.data <- data[-train.index, ]       # note use of neg index...different than Python!
+	train.index <- sample(1:N, train.pct * N)       # random sample of records (training set)
+	train.data <- data[train.index, ]       # perform train/test split
+	test.data <- data[-train.index, ]       # note use of neg index...different than Python!
 
-train.labels <- as.factor(as.matrix(labels)[train.index, ])     # extract training set labels
-test.labels <- as.factor(as.matrix(labels)[-train.index, ])     # extract test set labels
+	train.labels <- as.factor(as.matrix(labels)[train.index, ])     # extract training set labels
+	test.labels <- as.factor(as.matrix(labels)[-train.index, ])     # extract test set labels
 
-## Apply the Model
-# initialize results object
-err.rates <- data.frame()
+	## Apply the Model
+	# initialize results object
+	err.rates <- data.frame()
 
-max.k <- 100
+	max.k <- max
 
-# perform fit for various values of k
-for (k in 1:max.k) {
-  knn.fit <- knn(
-    train = train.data,         # training set
-    test = test.data,           # test set
-    cl = train.labels,          # true labels
-    k = k                       # number of NN to poll
-  )
+	# perform fit for various values of k
+	for (k in 1:max.k) {
+		knn.fit <- knn(
+			train = train.data,         # training set
+			test = test.data,           # test set
+			cl = train.labels,          # true labels
+			k = k                       # number of NN to poll
+		  )
 
-  # print params and confusion matrix for each value k
-  cat('\n', 'k = ', k, ', train.pct = ', train.pct, '\n', sep='')
-  print(table(test.labels, knn.fit))
+		# print params and confusion matrix for each value k
+		cat('\n', 'k = ', k, ', train.pct = ', train.pct, '\n', sep='')
+		print(table(test.labels, knn.fit))
 
-  # store generalation error and append to total results
-  this.err <- sum(test.labels != knn.fit) / length(test.labels)
-  err.rates <- rbind(err.rates, this.err)
-}
-
-}
+		# store generalation error and append to total results
+		this.err <- sum(test.labels != knn.fit) / length(test.labels)
+		err.rates <- rbind(err.rates, this.err)
+	}
+} 
+## end helper functions
 
 
 ## PREPROCESSING
 data <- iris                # create copy of iris dataframe
 labels <- data$Species      # store labels
 data$Species <- NULL        # remove labels from feature set (note: could
+maxN <- 10					# max number of iterations
 
-KNN(.7)
+for (x in 1:5 ) {
+	print ('\n Iteration= ', x, sep='')
+	KNN(.7, maxN)	
+	print ('\n ----------------------------------')
+}
 
 ## OUTPUT RESULTS
-results <- data.frame(1:max.k, err.rates)   # create results summary data frame
+results <- data.frame(1:maxN, err.rates)   # create results summary data frame
 names(results) <- c('k', 'err.rate')        # label columns of results df
 
 # create title for results plot
