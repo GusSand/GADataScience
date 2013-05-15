@@ -56,10 +56,12 @@ labels <- data$Species      # store labels
 data$Species <- NULL        # remove labels from feature set (note: could
 maxN <- 10					# max number of iterations
 
+## KNN for x times
 for (x in 1:5 ) {
-	print ('\n Iteration= ', x, sep='')
+	print ('Iteration= ');
+	print (x)
 	KNN(.7, maxN)	
-	print ('\n ----------------------------------')
+	print ('----------------------------------')
 }
 
 ## OUTPUT RESULTS
