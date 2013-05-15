@@ -72,7 +72,7 @@ names(results) <- c('k', 'err.rate')        # label columns of results df
 title <- paste('knn results (train.pct = ', train.pct, ')', sep='')
 
 # create results plot
-results.plot <- ggplot(results, aes(x=k, y=err.rate)) + geom_point() + geom_line()
+results.plot <- ggplot(results, aes(x=k, y=err.rates)) + geom_point() + geom_line()
 results.plot <- results.plot + ggtitle(title)
 
 # draw results plot

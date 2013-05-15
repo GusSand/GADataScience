@@ -44,6 +44,7 @@ KNN <- function(percent, max){
 
 		# store generalation error and append to total results
 		this.err <- sum(test.labels != knn.fit) / length(test.labels)
+		#print (err.rates)
 		err.rates <- rbind(err.rates, this.err)
 	}
 } 
@@ -65,14 +66,16 @@ for (x in 1:5 ) {
 }
 
 ## OUTPUT RESULTS
+#print("to print results")
 results <- data.frame(1:maxN, err.rates)   # create results summary data frame
+#print("after ")
 names(results) <- c('k', 'err.rate')        # label columns of results df
 
 # create title for results plot
 title <- paste('knn results (train.pct = ', train.pct, ')', sep='')
 
 # create results plot
-results.plot <- ggplot(results, aes(x=k, y=err.rate)) + geom_point() + geom_line()
+results.plot <- ggplot(results, aes(x=k, y=err.rates)) + geom_point() + geom_line()
 results.plot <- results.plot + ggtitle(title)
 
 # draw results plot

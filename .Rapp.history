@@ -1,0 +1,73 @@
+install.packages(ggplot2)
+install.packages("ggplot2")
+contour(volcano)
+persp(volcano)
+persp(volcano, expand=0.2)
+head(volcano)
+summary(volcano)
+df <- read.csv('http://heypodo.com/public/et/pace.csv')
+df <- read.csv('http://heypodo.com/public/etc/pace.csv')
+head(df)
+335/8
+head(df)
+library(MASS)
+data(crabs)
+data(mammals)
+data(wtloss)
+library
+library()
+head(wtloss)
+summary(wtloss)
+ggplot(wtloss, aes(y=days, x=weight)) + geom_point()
+library(ggplot2)
+ggplot(wtloss, aes(y=days, x=weight)) + geom_point()
+ggplot(wtloss, aes(y=Days, x=Weight)) + geom_point()
+ggplot(wtloss, aes(y=Days, x=Weight)) + geom_point() + geom_smooth(method="lm")
+head(crabs)
+ggplot(crabs, aes(y=FL, x=RW)) + geom_point() + geom_smooth(method="lm")
+mean(FL)
+mean(crabs.FL)
+mean(crabs[FL])
+mean(crabs$FL)
+library(caTools)
+install.packages(catools)
+install.packages("catools")
+install.packages("caTools")
+pwd
+pwd()
+ls
+cls
+read.table("last35_2.tsv", header="TRUE")
+read.table("last35_2.tsv", header=TRUE)
+read.table("last35_2.tsv")
+df <- read.table("last35_2.tsv", sep=",")
+head df
+summary df
+df <- read.table("last35_3", sep=",")
+summary(df)
+head(df)
+ggplot(df, aes(y=total, x=date)) + geom_point() + geom_smooth(method="lm")
+df <- read.table("last35_3", sep=",", header=yes)
+df <- read.table("last35_3", sep=",", header=true)
+df <- read.table("last35_3", sep=",", header=TRUE)
+ggplot(df, aes(y=total, x=date)) + geom_point() + geom_smooth(method="lm")
+ggplot(df, aes(y=V3, x=V2)) + geom_point() + geom_smooth(method="lm")
+getwd()
+source("/Users/gustavosandoval/datascience/repo/GADataScience/warmup_04.R")
+source("/Users/gustavosandoval/datascience/repo/GADataScience/warmup_04.R")
+?hist
+?hist
+head(algae)
+?plot
+?abline
+clear
+clc
+clc()
+clearconsole()
+?clear
+?clc
+¬¬
+cls
+ls
+cls
+cls()
