@@ -66,9 +66,9 @@ for (x in 1:5 ) {
 }
 
 ## OUTPUT RESULTS
-#print("to print results")
+print("to print results")
 results <- data.frame(1:maxN, err.rates)   # create results summary data frame
-#print("after ")
+print("after ")
 names(results) <- c('k', 'err.rate')        # label columns of results df
 
 # create title for results plot

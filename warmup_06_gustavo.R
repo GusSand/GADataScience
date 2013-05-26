@@ -26,6 +26,7 @@ fit1 <- lm(sample1$Population ~ sample1$Year)
 fit2 <- lm(sample1$Population ~ sample1$Year + I(sample1$Year^2))
 fit3 <- lm(sample1$Population ~ sample1$Year + I(sample1$Year^2) + I(sample1$Year^3))
 
+# 
 # Pay particular attention to this one!
 fit4 <- lm(sample1$Population ~ sample1$Year + I(sample1$Year^3))
 

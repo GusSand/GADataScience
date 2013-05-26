@@ -9,11 +9,20 @@ library(ggplot2)
 # How do we look at each of these features to predict if a student will get into graduate school
 # or not?
 x <- read.csv("http://www.ats.ucla.edu/stat/data/binary.csv")
+
+# creates a contingency table
 xtabs(~admit + rank, data=x)
+
+
 lin.fit <- lm(admit ~ ., data=x)
 lin.fit2 <- lm(admit ~ 0 + ., data=x)
 summary(lin.fit2)
+
+# make it a categorical view
+# summary only gives number and no mean > summary (x$rank)
 x$rank <- factor(x$rank)
+
+# logistic regression
 logit.fit <- glm(admit ~ ., family='binomial', data=x)
 summary(logit.fit)
 

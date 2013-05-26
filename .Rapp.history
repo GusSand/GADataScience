@@ -52,22 +52,66 @@ df <- read.table("last35_3", sep=",", header=true)
 df <- read.table("last35_3", sep=",", header=TRUE)
 ggplot(df, aes(y=total, x=date)) + geom_point() + geom_smooth(method="lm")
 ggplot(df, aes(y=V3, x=V2)) + geom_point() + geom_smooth(method="lm")
-getwd()
-source("/Users/gustavosandoval/datascience/repo/GADataScience/warmup_04.R")
-source("/Users/gustavosandoval/datascience/repo/GADataScience/warmup_04.R")
+help.start()
+?knn
+?kn
+?k
+/
+?
+q
+?kNN
+help knn
+help knn()
+?knn()
+install.packages('DMwR')
+library(DMwR)
+data(algae)
+summary(algae)
+hist(algae$mxPH, prob=T)
 ?hist
-?hist
-head(algae)
-?plot
+plot(algae$NH4, xlab= '')
+abline(h=mean(algae$NH4, na.rm =T), lty=1)
 ?abline
-clear
-clc
-clc()
-clearconsole()
-?clear
-?clc
-¬¬
-cls
+abline(h=mean(algae$NH4, na.rm =T) + sd(algae$NH4, na.rm = T), lty =2)
+abline(h=mean(algae$NH4, na.rm =T), lty=3)
+?lm
+lm(P04 ~ oP04, data=algae)
+lm(PO4 ~ oPO4, data=algae)
+clean.algae <- knnImputation(algae, k=10)
+?knnImputation
+head(algae)
+lm.a1 <- lm(a1 ~ ., data = clean.algae[, 1:12])
+summary(lm.a1)
+anova(lm.a1)
+final.lm <- step(lm.a1)
+?step
+head(algae)
+nrow(algae)
+install.packages('DMwR')
+install.packages(E1071)
+install(E1071)
+ls()
 ls
+ls()
 cls
-cls()
+source("lesson_03_Knn.R")
+getwd()
+source("lesson_03_Knn.R")
+source("lesson_03.R")
+summary(data)
+head(data)
+iris
+head(iris)
+labels
+nrow(iris)
+results.plot
+source("lesson_03.R")
+results.plot
+results.plot <- ggplot(results, aes(x=k, y=err.rate)) + geom_smooth()
+results.plot <- ggplot(results, aes(x=k, y=err.rate)) + geom_smooth()
+results.plot <- ggplot(results, aes(x=k, y=err.rate)) + geom_smooth()
+results.plot <- ggplot(results, aes(x=k, y=err.rates)) + geom_point() + geom_line()
+results.plot
+ggplot(results, aes(x=k, y=err.rates)) + geom_point() + geom_line()
+source("lesson_03.R")
+source("lesson_03.R")

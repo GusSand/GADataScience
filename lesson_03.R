@@ -27,7 +27,8 @@ test.labels <- as.factor(as.matrix(labels)[-train.index, ])     # extract test s
 # initialize results object
 err.rates <- data.frame()
 
-max.k <- 100
+#max.k <- 100
+max.k <- 5
 
 # perform fit for various values of k
 for (k in 1:max.k) {
@@ -59,6 +60,7 @@ results.plot <- ggplot(results, aes(x=k, y=err.rates)) + geom_point() + geom_lin
 results.plot <- results.plot + ggtitle(title)
 
 # draw results plot
+print ("Drawing Plot now")
 results.plot
 
 ## NOTES

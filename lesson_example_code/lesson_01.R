@@ -29,7 +29,7 @@ summary(linear.fit)
 # Multiple R-squared: 0.4292,	Adjusted R-squared: 0.3853
 # F-statistic: 9.774 on 1 and 13 DF,  p-value: 0.008029
 
-# this scatterplot shows the relationship after a log-log transformation
+# this scatterplot shows the relatjio|nship after a log-log transformation
 # based on this (and the previous) plot, we should expect the transformed data to produce a better linear fit
 ggplot(x, aes(y=log(speed), x=log(pop))) + geom_point()
 
