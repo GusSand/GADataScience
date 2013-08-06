@@ -361,7 +361,11 @@ def analyze_ReviewData(review_frame, hasUseful=True):
 	print "\nreview:  stars distribution \n", review_frame['review_stars'].value_counts()
 
 	if (hasUseful) :
+		dftemp = DataFrame(review_frame['review_useful'].value_counts())
 		print "\nreview:  useful distribution \n", review_frame['review_useful'].value_counts()
+		dftemp.plot() #kind='barh', label='review:  useful distribution')
+		#dftemp.legend()
+		plt.show()
 	#print "\nreview:  duplicates ? \n", review_frame.duplicated('business_id, user_id')
 
 	return review_frame
