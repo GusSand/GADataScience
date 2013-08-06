@@ -2,6 +2,8 @@ Readme:
 
 in order to run the code you need to:
 
+Download the data from kaggle: https://www.kaggle.com/c/yelp-recruiting/data. Please download both the test and training sets. 
+
 Install MongoDB
 
 Insert the yelp dataset into the MongoDB
