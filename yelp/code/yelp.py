@@ -361,11 +361,11 @@ def analyze_ReviewData(review_frame, hasUseful=True):
 	print "\nreview:  stars distribution \n", review_frame['review_stars'].value_counts()
 
 	if (hasUseful) :
-		dftemp = DataFrame(review_frame['review_useful'].value_counts())
+		#dftemp = DataFrame(review_frame['review_useful'].value_counts())
 		print "\nreview:  useful distribution \n", review_frame['review_useful'].value_counts()
-		dftemp.plot() #kind='barh', label='review:  useful distribution')
+		#dftemp.plot() #kind='barh', label='review:  useful distribution')
 		#dftemp.legend()
-		plt.show()
+		#plt.show()
 	#print "\nreview:  duplicates ? \n", review_frame.duplicated('business_id, user_id')
 
 	return review_frame
@@ -590,7 +590,21 @@ if (doMachineLearning) :
 
 	# estimators = # of trees
 	# oob_score = Whether to use out-of-bag samples to estimate the generalization error.
-	regressor = RandomForestRegressor(n_estimators=150, compute_importances=True)
+	# 2.4 GHz i7 => 8 GB of RAM
+	# 32 bit python
+
+	# 150 7.45 mins => RMSLE => 0.4796
+	# 300 933 	 => RMSLE => 0.4782
+	# 450 		 => RMSLE => 0.4781
+	# 500 
+
+
+	# 600		=> OOM => at @ 1.86 GB
+	# 1500 out of memory
+
+	n_estimators= 500 #1500
+	print "\n starting regressor with num trees -> ", n_estimators
+	regressor = RandomForestRegressor(n_estimators, compute_importances=True)
 
 	start = time.clock()
 
@@ -609,7 +623,9 @@ if (doMachineLearning) :
 
 	print "starting the regressor.fit...\n"
 	regressor.fit(trainData, trainTarget)
-	print "done with regressor.fit. Elapsed Time \n", (time.clock() - start)
+	t = (time.clock() - start)
+	tmin = float (t/60)
+	print "done with regressor.fit. Elapsed Time \n", t, tmin
 	
 	print"\n Feature importances: ", regressor.feature_importances_ 
 
