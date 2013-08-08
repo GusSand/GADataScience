@@ -596,13 +596,11 @@ if (doMachineLearning) :
 	# 150 7.45 mins => RMSLE => 0.4796
 	# 300 933 	 => RMSLE => 0.4782
 	# 450 		 => RMSLE => 0.4781
-	# 500 
-
-
+	# 500 		 => OOM
 	# 600		=> OOM => at @ 1.86 GB
 	# 1500 out of memory
 
-	n_estimators= 500 #1500
+	n_estimators= 475 #1500
 	print "\n starting regressor with num trees -> ", n_estimators
 	regressor = RandomForestRegressor(n_estimators, compute_importances=True)
 
